@@ -7,7 +7,7 @@
  * @size: size of the array
  */
 void selection_sort(int *array, size_t size){
-	unsigned int i, j;
+	unsigned int i, j, min_pos;
 	int tmp;
 
 	if (size < 2)
