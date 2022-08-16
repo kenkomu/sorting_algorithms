@@ -1,10 +1,11 @@
 #include "sort.h"
 #include <stdbool.h>
 /**
- *  function that sorts an array of integers in ascending order
- *  using the Bubble sort algorithm
- * 
- * 
+ *bubble_sort - function that sorts an array of integers in ascending order
+ *using the Bubble sort algorithm
+ *@array: array of int to sort
+ *@size: size of the array
+ *return: nothing void
  */
 int main(void)
 {
@@ -19,7 +20,8 @@ int main(void)
 void bubble_sort(int *array, size_t size)
 {
 	bool swapped = false;
-	int i = 0;
+	size_t i, j;
+	int temp;
 
 	do {
 		swapped = false;
