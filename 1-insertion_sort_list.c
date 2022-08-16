@@ -1,45 +1,61 @@
 #include "sort.h"
 
 /**
- * insertion_sort_list -  function that sorts a doubly linked list of integers in ascending order 
- * using the Insertion sort algorithm
- * 
- * @list: doubly linked list
+ * len_list - returns the length of a linked list
+ * @h: pointer to the list
  *
+ * Return: length of list
  */
-
-
-listint_t *create_listint(const int *array, size_t size)
+int len_list(listint_t *h)
 {
-    listint_t *list;
-    listint_t *node;
-    int *tmp;
+	int len = 0;
 
-    list = NULL;
-    while (size--)
-    {
-        node = malloc(sizeof(*node));
-        if (!node)
-            return (NULL);
-        tmp = (int *)&node->n;
-        *tmp = array[size];
-        node->next = list;
-        node->prev = NULL;
-        list = node;
-        if (list->next)
-            list->next->prev = list;
-    }
-    return (list);
+	while (h)
+	{
+		len++;
+		h = h->next;
+	}
+	return (len);
 }
-void insertion_sort_list(listint_t **list){
-    for (int i = 1; i < length;i++){
-        int key = a[i];
-        int j = j - 1;
-        while (j >=0 && a[j] > key)
-        {
-            a[j + 1] = a[j];
-            j = j -1;
-        }
-        a[j + 1] = key;
-    }
+
+/**
+ * insertion_sort_list - sorts a linked list with the Insert Sort algorithm
+ * @list: double pointer to the list to sort
+ */
+void insertion_sort_list(listint_t **list)
+{
+	listint_t *curr = NULL, *one = NULL;
+	listint_t *two = NULL, *three = NULL, *four = NULL;
+
+	if (!list || !(*list) || len_list(*list) < 2)
+		return;
+
+	curr = *list;
+
+	while (curr)
+	{
+		if (curr->prev && curr->n < curr->prev->n)
+		{
+			one = curr->prev->prev;
+			two = curr->prev;
+			three = curr;
+			four = curr->next;
+
+			two->next = four;
+			if (four)
+				four->prev = two;
+			three->next = two;
+			three->prev = one;
+			if (one)
+				one->next = three;
+			else
+				*list = three;
+			two->prev = three;
+			curr = *list;
+			print_list(*list);
+			continue;
+		}
+		else
+			curr = curr->next;
+	}
 }
