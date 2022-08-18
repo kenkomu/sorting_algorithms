@@ -11,7 +11,7 @@ int main (void){
     int array[]= {3,4,1,7,8,5,9,2,6};
     int size = 9;
 
-    quicksort(array, size);
+    quick_sort(array, size);
     for (int i = 0; i < size; i++){
         printf("%d", array[i]);
         printf("\n");
