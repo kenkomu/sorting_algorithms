@@ -1,61 +1,36 @@
 #include "sort.h"
-
 /**
- * len_list - returns the length of a linked list
- * @h: pointer to the list
- *
- * Return: length of list
+ * insertion_sort_list - insertion sorting function
+ * Return: void
+ * @list: listint_t double ptr
+ * Description: Insertion sorting function
  */
-int len_list(listint_t *h)
-{
-	int len = 0;
 
-	while (h)
-	{
-		len++;
-		h = h->next;
-	}
-	return (len);
-}
-
-/**
- * insertion_sort_list - sorts a linked list with the Insert Sort algorithm
- * @list: double pointer to the list to sort
- */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr = NULL, *one = NULL;
-	listint_t *two = NULL, *three = NULL, *four = NULL;
+	listint_t *node = NULL, *aux_node = NULL, *tmp_node = NULL;
 
-	if (!list || !(*list) || len_list(*list) < 2)
+	if (list == NULL || *list == NULL)
 		return;
-
-	curr = *list;
-
-	while (curr)
+	node = (*list)->next;
+	while (node)
 	{
-		if (curr->prev && curr->n < curr->prev->n)
+		aux_node = node->next;
+		while (node->prev != NULL && node->prev->n > node->n)
 		{
-			one = curr->prev->prev;
-			two = curr->prev;
-			three = curr;
-			four = curr->next;
-
-			two->next = four;
-			if (four)
-				four->prev = two;
-			three->next = two;
-			three->prev = one;
-			if (one)
-				one->next = three;
+			tmp_node = node->prev;
+			tmp_node->next = node->next;
+			if (node->next != NULL)
+				node->next->prev = node->prev;
+			node->next = tmp_node;
+			node->prev = tmp_node->prev;
+			tmp_node->prev = node;
+			if (node->prev == NULL)
+				*list = node;
 			else
-				*list = three;
-			two->prev = three;
-			curr = *list;
+				node->prev->next = node;
 			print_list(*list);
-			continue;
 		}
-		else
-			curr = curr->next;
+		node = aux_node;
 	}
 }
