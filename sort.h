@@ -47,5 +47,8 @@ void bitonic_sort(int *array, size_t size);
 void bitonic_recursion(int *array, int l, int r, int direction, size_t size);
 void bitonic_merge(int *array, int l, int r, int direction);
 listint_t *create_listint(const int *array, size_t size);
-
+int main (void);
+int partition (int array[], int low, int high);
+void quicksort_recursion(int array[], int low, int high);
+void swap (int *x,int *y);
 #endif
