@@ -30,5 +30,6 @@ void print_array(const int *array, size_t size);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void _swap(listint_t *prmCurrent, listint_t *prmAfter, listint_t **prmList);
+void counting_sort(int *prmArray, size_t prmSize);
 
 #endif
