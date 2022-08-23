@@ -34,5 +34,8 @@ void counting_sort(int *prmArray, size_t prmSize);
 void merge_sort(int *prmArray, size_t prmSize);
 void sort(int *prmArray, int prmStart, int prmEnd);
 void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd);
+int partition_hoare(int *array, int low, int high, size_t size);
+void quicksort_hoare(int *array, int low, int high, size_t size);
+void quick_sort_hoare(int *array, size_t size);
 
 #endif
