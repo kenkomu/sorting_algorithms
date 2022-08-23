@@ -31,5 +31,8 @@ void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void _swap(listint_t *prmCurrent, listint_t *prmAfter, listint_t **prmList);
 void counting_sort(int *prmArray, size_t prmSize);
+void merge_sort(int *prmArray, size_t prmSize);
+void sort(int *prmArray, int prmStart, int prmEnd);
+void merge(int *prmArray, int prmStart, int prmMiddle, int prmEnd);
 
 #endif
